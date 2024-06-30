@@ -9,26 +9,27 @@ import catchAsyncErrors from "./catchAsyncErrors.js";
 // const User = require("../models/userModel");
 
 export const isAuthenticatedUser = async (req, res, next) => {
-  try{
-  const { token } = req.cookies;
-  console.dir("isAuthenticatedUsers",req.cookies.name);
-  
-  console.log("Checkign my token");
-  // console.log(token);
+  try {
+    const { token } = req.cookies;
+    console.dir("isAuthenticatedUsers", req.cookies.name);
 
-  if (!token) {
-    return next(new ErrorHandler("Please Login to access this resource", 401));
+    console.log("Checkign my token");
+    // console.log(token);
+
+    if (!token) {
+      return next(
+        new ErrorHandler("Please Login to access this resource", 401)
+      );
+    }
+
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+
+    req.user = await User.findById(decodedData.id);
+
+    next();
+  } catch (err) {
+    console.error(err);
   }
-
-  const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-
-  req.user = await User.findById(decodedData.id);
-
-  next();
-}
-catch (err) {
-  console.error(err);
-}
 };
 
 export const authorizeRoles = (...roles) => {

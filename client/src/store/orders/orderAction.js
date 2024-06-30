@@ -55,6 +55,7 @@ export const myOrders = async (dispatch) => {
       "https://karwadenge-server.onrender.com/api/v1/orders/me",
       config
     );
+    console.log(data);
 
     dispatch(
       myOrderActions.myOrderSuccess({

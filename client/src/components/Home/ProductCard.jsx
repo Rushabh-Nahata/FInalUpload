@@ -15,14 +15,14 @@ function ProductCard({ product }) {
       <Box
         sx={{
           border: "2px solid #e7e3e3",
-          width: { xs: "40vw", sm: "27vw" },
+          width: { xs: "40vw", sm: "27vw", md: "40vh" },
           // height: { xs: "40vh" },
           display: "flex",
           alignItems: "center",
           textAlign: "center",
           justifyContent: "flex-start",
           flexDirection: "column",
-          height: { xs: "34vh", sm: "54vh" },
+          height: { xs: "34vh", sm: "54vh", md: "55vh" },
           marginRight: "1vw",
           marginLeft: "1vw",
           marginBottom: "2vh",
