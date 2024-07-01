@@ -104,6 +104,7 @@
     text-align: center;
     align-items: center;
     display: flex;
+    padding: 5vh 0;
     /* width: 90%; */
     margin: auto;
     justify-content: space-evenly;

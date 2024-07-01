@@ -33,11 +33,11 @@ const MyOrder = () => {
           sx={{
             width: "100%",
             height: "91vh",
-            marginTop: "9vh",
+            marginTop: { xs: "7vh", sm: "7vh", md: "25vh" },
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            border: "2px solid black",
+            // border: "2px solid black",
           }}
         >
           <table className="table">
