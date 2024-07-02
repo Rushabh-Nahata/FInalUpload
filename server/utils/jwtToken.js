@@ -18,7 +18,7 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    domain: "karwadenge.com",
+    domain: "karwadenge-server.onrender.com",
     secure: process.env.NODE_ENV === "production", // Ensures cookie is sent over HTTPS in production
     sameSite: "strict",
     // httpOnly: true,
