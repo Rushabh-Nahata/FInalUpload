@@ -24,15 +24,21 @@ export const registerUser = async (req, res, next) => {
       digits: true,
     });
     //Creating a user
-    const user = await User.create({
-      name,
-      email,
-      password,
-      avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
-    });
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return next(new ErrorHandler("User already exists", 400));
+    } else {
+      const user = await User.create({
+        name,
+        email,
+        password,
+        avatar: {
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+        },
+      });
+    }
 
     await TempUser.create({
       userId: user.id,
